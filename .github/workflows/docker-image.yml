@@ -24,6 +24,6 @@ jobs:
         run: docker-compose -f docker-compose.yml up -d
       - name: Test MySQL service
         run: |
-          docker-compose -f docker-compose.yml exec -T mysql-service sh -c "mysql -uroot -proot -e 'SELECT 1;'"
+          docker-compose -f docker-compose.yml exec -T mysqldb sh -c "mysql -u${{ secrets.DB_USERNAME }} -p${{ secrets.DB_PASSWORD }} -e 'SELECT 1;'"
       - name: Stop services
         run: docker-compose -f docker-compose.yml down

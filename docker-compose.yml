@@ -1,6 +1,7 @@
 services:
   server:
     build: .
+    container_name: auth-service
     restart: always
     ports:
       - 4040:4040
@@ -8,6 +9,7 @@ services:
       - mysqldb
   mysqldb:
     image: "mysql:5.7"
+    container_name: mysql-service
     ports:
       - 3307:3306
     environment:

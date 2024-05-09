@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build with Docker Compose
-        run: docker-compose -f docker-compose.yml build
+        run: docker-compose -f docker-compose.yml build   
 
   test:
     runs-on: ubuntu-latest
@@ -24,6 +24,6 @@ jobs:
         run: docker-compose -f docker-compose.yml up -d
       - name: Test MySQL service
         run: |
-          docker-compose -f docker-compose.yml exec -T mysqldb sh -c "mysql -uroot -proot -e 'SELECT 1;'"
+          docker-compose -f docker-compose.yml exec -T mysql-service sh -c "mysql -uroot -proot -e 'SELECT 1;'"
       - name: Stop services
         run: docker-compose -f docker-compose.yml down

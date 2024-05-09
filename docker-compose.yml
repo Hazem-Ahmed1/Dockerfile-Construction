@@ -1,0 +1,15 @@
+services:
+  server:
+    build: .
+    restart: always
+    ports:
+      - 4040:4040
+    depends_on:
+      - mysqldb
+  mysqldb:
+    image: "mysql:5.7"
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: auth
+      MYSQL_ROOT_PASSWORD: root

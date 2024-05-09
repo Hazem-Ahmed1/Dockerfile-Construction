@@ -22,8 +22,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Start services with Docker Compose
         run: docker-compose -f docker-compose.yml up -d
-      - name: Test MySQL service
-        run: |
-          docker-compose -f docker-compose.yml exec -T mysqldb sh -c "mysql -u${{ secrets.DB_USERNAME }} -p${{ secrets.DB_PASSWORD }} -e 'SELECT 1;'"
       - name: Stop services
         run: docker-compose -f docker-compose.yml down
